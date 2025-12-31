@@ -75,7 +75,7 @@ Servo Connections:
 You have two options:
 
 #### Option A: Use Public Broker (Testing Only)
-- Use the default broker in config: `119.59.99.155:8883`
+- Use the default broker in config: `YOUR_BROKER_IP:8883`
 - **Not recommended for production**
 
 #### Option B: Install Your Own Broker (Recommended)

@@ -6,10 +6,10 @@
 #define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
 
 // MQTT Configuration
-#define MQTT_BROKER "119.59.99.155"
-#define MQTT_PORT 8883
-#define MQTT_USER "std_elect3"
-#define MQTT_PASSWORD "std_elect3"
+#define MQTT_BROKER "YOUR_MQTT_BROKER_IP" // e.g. 192.168.1.100 or localhost
+#define MQTT_PORT 1883
+#define MQTT_USER "YOUR_MQTT_USERNAME"
+#define MQTT_PASSWORD "YOUR_MQTT_PASSWORD"
 #define MQTT_CLIENT_ID "ESP32_PetFeeder"
 
 // MQTT Topics

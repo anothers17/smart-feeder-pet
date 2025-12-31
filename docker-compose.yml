@@ -21,10 +21,10 @@ services:
     image: mysql:8.0
     container_name: smart-feeder-db
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-smartfeeder123}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
       MYSQL_DATABASE: ${DB_NAME:-smart_pet_feeder}
-      MYSQL_USER: ${DB_USER:-feeder_user}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-smartfeeder123}
+      MYSQL_USER: ${DB_USER:-user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
     ports:
       - "3306:3306"
     volumes:

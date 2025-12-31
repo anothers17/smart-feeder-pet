@@ -53,10 +53,10 @@ class Settings:
     
     def _load_mqtt_settings(self):
         """Load MQTT configuration."""
-        self.mqtt_broker = os.getenv('MQTT_BROKER', '119.59.99.155')
-        self.mqtt_port = int(os.getenv('MQTT_PORT', '8883'))
-        self.mqtt_username = os.getenv('MQTT_USERNAME', '')
-        self.mqtt_password = os.getenv('MQTT_PASSWORD', '')
+        self.mqtt_broker = os.getenv('MQTT_BROKER', 'localhost')
+        self.mqtt_port = int(os.getenv('MQTT_PORT', '1883'))
+        self.mqtt_username = os.getenv('MQTT_USERNAME', None)
+        self.mqtt_password = os.getenv('MQTT_PASSWORD', None)
         self.mqtt_client_id = os.getenv('MQTT_CLIENT_ID', 'smart_pet_feeder_app')
         
         # MQTT Topics
@@ -65,11 +65,11 @@ class Settings:
     
     def _load_database_settings(self):
         """Load database configuration."""
-        self.db_host = os.getenv('DB_HOST', '119.59.99.155')
+        self.db_host = os.getenv('DB_HOST', 'localhost')
         self.db_port = int(os.getenv('DB_PORT', '3306'))
-        self.db_user = os.getenv('DB_USER', 'std_elect3')
-        self.db_password = os.getenv('DB_PASSWORD', 'std_elect3')
-        self.db_name = os.getenv('DB_NAME', 'std_final8')
+        self.db_user = os.getenv('DB_USER', 'root')
+        self.db_password = os.getenv('DB_PASSWORD', '')
+        self.db_name = os.getenv('DB_NAME', 'smart_pet_feeder')
         
         # Validate database settings in REAL mode
         if self.is_real:
