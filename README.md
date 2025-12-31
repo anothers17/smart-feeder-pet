@@ -71,11 +71,21 @@ For `REAL` mode or local service testing, you can spin up a local MQTT broker an
 
 ---
 
-## 📜 Documentation
+## 📜 Step-by-Step Guides
+
+For detailed, step-by-step instructions on how to set up and run the project, please refer to:
+
+- 💻 **[Simulator Setup Guide](docs/setup_simulator.md)** - For a pure software-only test environment.
+- 🔧 **[Real Hardware Setup Guide](docs/setup_real.md)** - For assembling physical ESP32 hardware.
+- 📦 **[Database & Docker Setup](docs/docker-setup.md)** - For initializing local services.
+
+---
+
+## 🏗️ Architecture & Technical Docs
 
 - [System Architecture](docs/architecture.md)
-- [Simulator Guide](simulator/README.md)
-- [Database Setup](docs/docker-setup.md)
+- [MQTT Simulator Details](simulator/README.md)
+- [Firmware Documentation](mcu/README.md)
 
 ---
 
