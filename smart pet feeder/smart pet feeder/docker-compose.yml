@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # MQTT Broker (Mosquitto)
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    container_name: smart-feeder-mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./docker/mosquitto/config:/mosquitto/config
+      - ./docker/mosquitto/data:/mosquitto/data
+      - ./docker/mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+    networks:
+      - smart-feeder-network
+
+  # MySQL Database
+  database:
+    image: mysql:8.0
+    container_name: smart-feeder-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-smartfeeder123}
+      MYSQL_DATABASE: ${DB_NAME:-smart_pet_feeder}
+      MYSQL_USER: ${DB_USER:-feeder_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-smartfeeder123}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - smart-feeder-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  # Virtual Device Simulator
+  simulator:
+    build: .
+    container_name: smart-feeder-simulator
+    command: python simulator/virtual_device.py
+    environment:
+      - MODE=SIMULATOR
+      - MQTT_BROKER=mqtt
+      - MQTT_PORT=1883
+    depends_on:
+      - mqtt
+    restart: unless-stopped
+    networks:
+      - smart-feeder-network
+  # Main Application (headless mode for server deployment)
+  # Note: For GUI, run locally instead
+  # app:
+  #   build: .
+  #   container_name: smart-feeder-app
+  #   environment:
+  #     - MODE=REAL
+  #     - MQTT_BROKER=mqtt
+  #     - MQTT_PORT=1883
+  #     - DB_HOST=database
+  #     - DB_PORT=3306
+  #     - DB_USER=${DB_USER:-feeder_user}
+  #     - DB_PASSWORD=${DB_PASSWORD:-smartfeeder123}
+  #     - DB_NAME=${DB_NAME:-smart_pet_feeder}
+  #   depends_on:
+  #     database:
+  #       condition: service_healthy
+  #     mqtt:
+  #       condition: service_started
+  #   networks:
+  #     - smart-feeder-network
+
+networks:
+  smart-feeder-network:
+    driver: bridge
+
+volumes:
+  mqtt-data:
+  mysql-data:

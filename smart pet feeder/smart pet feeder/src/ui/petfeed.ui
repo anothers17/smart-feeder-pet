@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>742</width>
+    <height>513</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icon/resource.qrc">
+    <normaloff>:/icon/kitten_5267453.png</normaloff>:/icon/kitten_5267453.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(253, 235, 255);</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignTop">
+        <widget class="QFrame" name="haeder">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <family>FC Lamoon</family>
+              <pointsize>25</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>SMART PET FEEDER</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_4">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_5">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_7">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="food_icon_label">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>10</y>
+                     <width>141</width>
+                     <height>111</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="icon/resource.qrc">:/icon/pet-food_10551725.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="food_icon_label_2">
+                   <property name="geometry">
+                    <rect>
+                     <x>200</x>
+                     <y>10</y>
+                     <width>141</width>
+                     <height>111</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="icon/resource.qrc">:/icon/pet-feeder_emthy.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="layoutWidget">
+                   <property name="geometry">
+                    <rect>
+                     <x>60</x>
+                     <y>140</y>
+                     <width>81</width>
+                     <height>18</height>
+                    </rect>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_3">
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>Statas:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="feed_weight">
+                      <property name="text">
+                       <string>0 g</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="layoutWidget">
+                   <property name="geometry">
+                    <rect>
+                     <x>230</x>
+                     <y>140</y>
+                     <width>91</width>
+                     <height>18</height>
+                    </rect>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QLabel" name="label_2">
+                      <property name="text">
+                       <string>amount:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>0 g</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_8">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <widget class="QFrame" name="frame_11">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_6">
+                      <item>
+                       <widget class="QFrame" name="frame_2">
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout_5">
+                         <item>
+                          <widget class="QPushButton" name="stop_bt">
+                           <property name="styleSheet">
+                            <string notr="true">alternate-background-color: rgb(255, 206, 225);</string>
+                           </property>
+                           <property name="text">
+                            <string>STOP</string>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="icon/resource.qrc">
+                             <normaloff>:/icon/pet-food_10551725.png</normaloff>:/icon/pet-food_10551725.png</iconset>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="feed_bt">
+                           <property name="styleSheet">
+                            <string notr="true">
+selection-background-color: rgb(255, 206, 225);</string>
+                           </property>
+                           <property name="text">
+                            <string>FEED</string>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="icon/resource.qrc">
+                             <normaloff>:/icon/pet-food_10551327.png</normaloff>:/icon/pet-food_10551327.png</iconset>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QFrame" name="frame_12">
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                        <widget class="QPushButton" name="fill_food">
+                         <property name="geometry">
+                          <rect>
+                           <x>110</x>
+                           <y>10</y>
+                           <width>81</width>
+                           <height>61</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 206, 225);
+alternate-background-color: rgb(255, 85, 88);</string>
+                         </property>
+                         <property name="text">
+                          <string>Fill Food</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="icon/resource.qrc">
+                           <normaloff>:/icon/pet-feeder_full.png</normaloff>:/icon/pet-feeder_full.png</iconset>
+                         </property>
+                        </widget>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_6">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_9">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="graph_widget">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>10</y>
+                     <width>331</width>
+                     <height>231</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>GRAPH</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_10">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="label_4">
+                     <property name="text">
+                      <string>Feed per month :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox">
+                     <item>
+                      <property name="text">
+                       <string>January </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>February </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>March</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>April </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>May </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>June</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>July</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>August </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>September</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>October </string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>November</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>December</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icon/resource.qrc">
+                        <normaloff>:/icon/calendar_11509295.png</normaloff>:/icon/calendar_11509295.png</iconset>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="icon/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

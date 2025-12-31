@@ -1,0 +1,27 @@
+# Smart Pet Feeder - Python Dependencies
+
+# MQTT Client
+paho-mqtt==1.6.1
+
+# Database
+pymysql==1.1.0
+
+# GUI Framework
+PyQt5==5.15.10
+
+# Plotting and Visualization
+matplotlib==3.8.2
+pyqtgraph==0.13.3
+numpy==1.26.2
+
+pytest>=7.0.0
+
+# Configuration Management
+python-dotenv==1.0.0
+
+# Logging (built-in, but listed for clarity)
+# logging - standard library
+
+# Development Tools (optional)
+# pylint==3.0.3
+# black==23.12.1

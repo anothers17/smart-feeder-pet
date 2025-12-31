@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+*.env
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Docker
+docker/mysql/data/
+docker/mosquitto/data/
+docker/mosquitto/log/
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# MCU
+mcu/
+
+# Temporary
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

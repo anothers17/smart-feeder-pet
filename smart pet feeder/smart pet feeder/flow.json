@@ -1,0 +1,658 @@
+[
+    {
+        "id": "fa545ac33f1808b3",
+        "type": "tab",
+        "label": "project",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f3e5c2e8e7db74f9",
+        "type": "debug",
+        "z": "fa545ac33f1808b3",
+        "name": "debug weight",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "55a8883092d47219",
+        "type": "mqtt in",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "topic": "IoT/project/monitoring",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5d801496498558db",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "555c1a34e7f2c1fe"
+            ]
+        ]
+    },
+    {
+        "id": "0eab1e5478aeabd5",
+        "type": "ui_gauge",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "group": "25c2428b1d5e4f44",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "FOOD WEIGHT",
+        "label": "g",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "300",
+        "colors": [
+            "#4dff4d",
+            "#ffff4d",
+            "#ff0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 960,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "555c1a34e7f2c1fe",
+        "type": "function",
+        "z": "fa545ac33f1808b3",
+        "name": "Data food",
+        "func": "let din = msg.payload\n\n\nmsg.payload.food_weight = din['food_weight']\n\nmsg.payload.weight = din['amount']\n\nmsg.payload.status_amount = din['status_mount']\n\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 200,
+        "wires": [
+            [
+                "c55d2b25b7f66b62"
+            ]
+        ]
+    },
+    {
+        "id": "c55d2b25b7f66b62",
+        "type": "function",
+        "z": "fa545ac33f1808b3",
+        "name": "function data food",
+        "func": "let data_in = msg.payload;\n\nlet msg1 = { payload: data_in[\"food_weight\"], topic: \"food_weight\" };\nlet msg2 = { payload: data_in[\"amount\"], topic: \"amount\" };\nlet msg3 = { payload: data_in[\"status_amount\"], topic: \"status_amount\" };\n\nlet audio = null; // กำหนดค่าเริ่มต้นเป็น null เพื่อป้องกันปัญหา\n\nif (data_in.status_amount === \"empty\") {\n    audio = { payload: \"empty\" }; \n} else {\n    audio = null\n}\n\nreturn [msg1, msg2, msg3, audio]; // ถ้าไม่ใช่ \"empty\" จะส่ง null ไปที่ Output 4\n\n",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 200,
+        "wires": [
+            [
+                "0eab1e5478aeabd5",
+                "f3e5c2e8e7db74f9"
+            ],
+            [
+                "b7edb2333c46f089",
+                "63c0bb4c6a3aef13"
+            ],
+            [
+                "66eac8a30c02e61e",
+                "2ba2405f1993f3c4"
+            ]
+        ]
+    },
+    {
+        "id": "b7edb2333c46f089",
+        "type": "ui_gauge",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "group": "25c2428b1d5e4f44",
+        "order": 3,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "AMOUNT",
+        "label": "g",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "3000",
+        "colors": [
+            "#00ff00",
+            "#e2e240",
+            "#ff0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 940,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "63c0bb4c6a3aef13",
+        "type": "debug",
+        "z": "fa545ac33f1808b3",
+        "name": "debug amount",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "66eac8a30c02e61e",
+        "type": "debug",
+        "z": "fa545ac33f1808b3",
+        "name": "debug data status mount",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "91cedb545851bdc4",
+        "type": "ui_audio",
+        "z": "fa545ac33f1808b3",
+        "name": "AUDIO STATUS MOUNT",
+        "group": "25c2428b1d5e4f44",
+        "voice": "",
+        "always": true,
+        "x": 1170,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "93c2138eeddea50b",
+        "type": "function",
+        "z": "fa545ac33f1808b3",
+        "name": "function Delete",
+        "func": "msg.payload = {}\nmsg.topic = \"delete from std_final8.feeding_history\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 460,
+        "wires": [
+            [
+                "1a1dae4fdcf48aa2"
+            ]
+        ]
+    },
+    {
+        "id": "ed805a7b1c2f6a83",
+        "type": "function",
+        "z": "fa545ac33f1808b3",
+        "name": "function Reset",
+        "func": "msg.payload = {}\nmsg.topic = \"ALTER TABLE feeding_history AUTO_INCREMENT = 1\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 540,
+        "wires": [
+            [
+                "1a1dae4fdcf48aa2"
+            ]
+        ]
+    },
+    {
+        "id": "06dfba76aa5096e7",
+        "type": "ui_button",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "group": "25c2428b1d5e4f44",
+        "order": 9,
+        "width": 7,
+        "height": 1,
+        "passthru": false,
+        "label": "Delete",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 230,
+        "y": 460,
+        "wires": [
+            [
+                "93c2138eeddea50b"
+            ]
+        ]
+    },
+    {
+        "id": "1a1d9af33e1c9266",
+        "type": "ui_button",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "group": "25c2428b1d5e4f44",
+        "order": 12,
+        "width": 7,
+        "height": 1,
+        "passthru": false,
+        "label": "Reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 230,
+        "y": 540,
+        "wires": [
+            [
+                "ed805a7b1c2f6a83"
+            ]
+        ]
+    },
+    {
+        "id": "1a1dae4fdcf48aa2",
+        "type": "mysql",
+        "z": "fa545ac33f1808b3",
+        "mydb": "b352ab6a2de25aa6",
+        "name": "",
+        "x": 760,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53d4af4f177d6f7d",
+        "type": "ui_button",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "group": "25c2428b1d5e4f44",
+        "order": 15,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Fill Food",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"status\":\"r\"}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 240,
+        "y": 660,
+        "wires": [
+            [
+                "b8cad49d01ac9d6e"
+            ]
+        ]
+    },
+    {
+        "id": "b8cad49d01ac9d6e",
+        "type": "mqtt out",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "topic": "IoT/project/control",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f5dbeb9d3cbcdb12",
+        "x": 450,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "fdb65da06b8a4f3e",
+        "type": "mqtt in",
+        "z": "fa545ac33f1808b3",
+        "name": "",
+        "topic": "IoT/project/monitoring",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5d801496498558db",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 920,
+        "wires": [
+            [
+                "fff92d6fb656b003"
+            ]
+        ]
+    },
+    {
+        "id": "fff92d6fb656b003",
+        "type": "function",
+        "z": "fa545ac33f1808b3",
+        "name": "Query",
+        "func": "msg.topic = \"INSERT INTO std_final8.feeding_history (amount, food_weight, status_mount) VALUES ('\" \n    + msg.payload.amount + \"', '\" \n    + msg.payload.food_weight + \"', '\" \n    + msg.payload.status_mount + \"')\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 920,
+        "wires": [
+            [
+                "430fc189c9ade75b",
+                "df4c7374aa56b385"
+            ]
+        ]
+    },
+    {
+        "id": "430fc189c9ade75b",
+        "type": "mysql",
+        "z": "fa545ac33f1808b3",
+        "mydb": "b352ab6a2de25aa6",
+        "name": "feed data",
+        "x": 740,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ba2405f1993f3c4",
+        "type": "switch",
+        "z": "fa545ac33f1808b3",
+        "name": "Check Empty",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "empty",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 950,
+        "y": 320,
+        "wires": [
+            [
+                "91cedb545851bdc4",
+                "5f202a6e3cdef290"
+            ]
+        ]
+    },
+    {
+        "id": "5f202a6e3cdef290",
+        "type": "debug",
+        "z": "fa545ac33f1808b3",
+        "name": "debug data status mount",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1170,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "df4c7374aa56b385",
+        "type": "debug",
+        "z": "fa545ac33f1808b3",
+        "name": "debug Query",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "7224060bc4c10805",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "925c7f5ff8cd5710",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1b636a3c8c2f0d40",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "81476ec2efed8797",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e52a7a88e0da8d49",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 7,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "832fbec281818ad3",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 8,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "8f62aa17d5d66f10",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 10,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "3e3857573eaa05e4",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 11,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "980366e8d5d4c700",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 13,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "e6af4d63961b0b9e",
+        "type": "ui_spacer",
+        "z": "fa545ac33f1808b3",
+        "name": "spacer",
+        "group": "25c2428b1d5e4f44",
+        "order": 14,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "5d801496498558db",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "119.59.99.155",
+        "port": "8883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "25c2428b1d5e4f44",
+        "type": "ui_group",
+        "name": "Data food",
+        "tab": "72616052b93a10e5",
+        "order": 1,
+        "disp": true,
+        "width": "13",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b352ab6a2de25aa6",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "119.59.99.155",
+        "port": "3306",
+        "db": "std_final8",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "f5dbeb9d3cbcdb12",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "119.59.99.155",
+        "port": "8883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "72616052b93a10e5",
+        "type": "ui_tab",
+        "name": "Monitoring",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
