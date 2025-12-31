@@ -1,195 +1,104 @@
-# Simulator Mode Setup Guide
+# 💻 Simulator Mode Setup Guide
 
-## Overview
-
-Simulator mode allows you to run and test the Smart Pet Feeder application without any physical hardware. This is perfect for:
-
-- Development and testing
-- Demonstrations
-- Learning the system
-- CI/CD pipelines
-
-## Prerequisites
-
-- Python 3.8 or higher
-- pip (Python package manager)
-- No hardware required! 🎉
-
-## Installation Steps
-
-### 1. Install Python Dependencies
-
-\`\`\`bash
-# Navigate to project directory
-cd "smart pet feeder/smart pet feeder"
-
-# Install required packages
-pip install -r requirements.txt
-\`\`\`
-
-### 2. Configure Environment
-
-\`\`\`bash
-# Copy the environment template
-copy .env.example .env
-
-# Open .env in your text editor
-notepad .env
-\`\`\`
-
-### 3. Set Simulator Mode
-
-In your `.env` file, ensure the following settings:
-
-\`\`\`env
-# Set mode to SIMULATOR
-MODE=SIMULATOR
-
-# MQTT settings (can use defaults for simulator)
-MQTT_BROKER=localhost
-MQTT_PORT=8883
-MQTT_CLIENT_ID=smart_pet_feeder_app
-
-# Other settings can remain as default
-\`\`\`
-
-## Running the Simulator
-
-You need to run **two** programs:
-
-### Terminal 1: Virtual Device
-
-This simulates the ESP32 hardware:
-
-\`\`\`bash
-python simulator/virtual_device.py
-\`\`\`
-
-You should see:
-\`\`\`
-============================================================
-🤖 Virtual ESP32 Device Running
-============================================================
-📡 MQTT Broker: localhost:8883
-📊 Publishing to: IoT/project/monitoring
-🎮 Listening on: IoT/project/control
-🍖 Initial food capacity: 3000g
-⏱️  Update interval: 10s
-============================================================
-\`\`\`
-
-### Terminal 2: GUI Application
-
-This runs the user interface:
-
-\`\`\`bash
-python main.py
-\`\`\`
-
-You should see the GUI window open with the Smart Pet Feeder interface.
-
-## Using the Simulator
-
-### Control Buttons
-
-- **FEED**: Opens the virtual servo motor
-- **STOP**: Closes the virtual servo motor
-- **Fill Food**: Resets food capacity to 3000g
-
-### Monitoring
-
-- **Status**: Shows current food weight in bowl
-- **Amount**: Shows remaining food in container
-- **Graph**: Select a month to view feeding history
-
-### What's Being Simulated
-
-1. **Weight Sensor**: Randomly changes to simulate pet eating
-2. **Food Capacity**: Decreases as food is dispensed
-3. **Servo Motor**: Opens/closes based on commands
-4. **MQTT Communication**: In-memory message queue
-5. **Database**: In-memory storage with optional JSON persistence
-
-## Data Persistence
-
-By default, simulator data is stored in memory and lost when you close the application.
-
-To persist data between runs, the mock database saves to:
-\`\`\`
-simulator/data/feeding_history.json
-\`\`\`
-
-This file is automatically created and updated.
-
-## Troubleshooting
-
-### Issue: "Module not found" errors
-
-**Solution**: Ensure all dependencies are installed:
-\`\`\`bash
-pip install -r requirements.txt
-\`\`\`
-
-### Issue: Virtual device not connecting
-
-**Solution**: Make sure both programs are using the same MQTT settings in `.env`
-
-### Issue: No data showing in UI
-
-**Solution**: 
-1. Ensure virtual device is running first
-2. Wait 10 seconds for first data update
-3. Check console for error messages
-
-### Issue: Graph shows "No Data Available"
-
-**Solution**: The mock database generates 30 days of historical data. Select the current month or previous months to see data.
-
-## Advanced Configuration
-
-### Changing Update Intervals
-
-In `.env`:
-\`\`\`env
-# UI update interval (milliseconds)
-UI_UPDATE_INTERVAL=5000
-
-# In virtual_device.py, you can modify:
-# SIMULATOR_UPDATE_INTERVAL = 10  # seconds
-\`\`\`
-
-### Customizing Simulated Behavior
-
-Edit `simulator/virtual_device.py` to modify:
-- Weight change ranges
-- Food consumption rate
-- Update frequency
-- Initial values
-
-### Generating More Historical Data
-
-Edit `src/database/mock_db.py`:
-\`\`\`python
-# Change days parameter in _generate_mock_data
-self._generate_mock_data(days=90)  # 90 days of data
-\`\`\`
-
-## Next Steps
-
-Once you're comfortable with the simulator:
-
-1. Review the [Architecture Documentation](architecture.md)
-2. Explore the codebase
-3. Try modifying the virtual device behavior
-4. Set up real hardware (see [setup_real.md](setup_real.md))
-
-## Tips for Development
-
-- Keep both terminals visible to see real-time communication
-- Use the log files for debugging (`smart_pet_feeder.log`)
-- Experiment with different feeding patterns
-- Test edge cases (empty food, full capacity, etc.)
+Welcome to the **Smart Pet Feeder Simulator!** This guide will help you get the entire system running on your computer in minutes, without needing any physical hardware.
 
 ---
 
-**Happy Simulating! 🚀**
+## 🌟 Why use the Simulator?
+
+> [!TIP]
+> **Perfect for:** Testing UI changes, debugging logic, or demonstrating the project when physical hardware isn't available.
+
+- **Fast Iteration:** See changes immediately without uploading firmware.
+- **Safety First:** No risk of overflowing real pet food!
+- **Zero Cost:** Test all features for free using your computer's resources.
+
+---
+
+## 🛠️ Prerequisites
+
+Before we begin, ensure you have:
+- [ ] **Python 3.8+** installed ([Download here](https://www.python.org/))
+- [ ] **pip** (usually comes with Python)
+- [ ] A terminal or command prompt (CMD/PowerShell)
+
+---
+
+## ⚡ Quick Start (The Easiest Way)
+
+We've provided a **`manage.bat`** script to automate everything for Windows users.
+
+1.  **Open the project folder** in File Explorer.
+2.  **Double-click `manage.bat`**.
+3.  **Select Option 1 (Setup)**: This installs all required libraries automatically.
+4.  **Select Option 2 (Run Simulator)**:
+    - This will automatically create your `.env` configuration.
+    - It will launch the **Virtual ESP32** in a new terminal.
+    - it will launch the **Main GUI Application**.
+
+---
+
+## 🕹️ Manual Setup (Step-by-Step)
+
+If you prefer to run things manually or are on a non-Windows system:
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Configure Environment
+```bash
+# Copy the example config
+copy .env.example .env
+```
+Ensure `MODE=SIMULATOR` is set in your new `.env` file.
+
+### 3. Start the Components
+You need to run these in **two separate terminals**:
+
+| Task | Command | Description |
+| :--- | :--- | :--- |
+| **Terminal 1** | `python simulator/virtual_device.py` | This is your "Virtual ESP32" |
+| **Terminal 2** | `python main.py` | This is the User Interface |
+
+---
+
+## 📊 What's Happening Under the Hood?
+
+The simulator mimics real-world physics and IoT communication:
+
+```mermaid
+graph LR
+    subgraph "Your Computer"
+    A[Virtual Device] -- "MQTT (Pub/Sub)" --> B[GUI App]
+    A -- "Simulation" --> C[Weight Sensor]
+    A -- "Simulation" --> D[Servo Motor]
+    B -- "Logs History" --> E[(Local JSON DB)]
+    end
+```
+
+- **Weight Simulation**: The "pet" will randomly eat food, causing the weight to drop.
+- **Auto-Stop**: When you trigger a feed, the motor closes automatically when the bowl reaches 90g.
+- **Persistence**: Your feeding history is saved to `simulator/data/feeding_history.json`.
+
+---
+
+## 🔍 Troubleshooting
+
+> [!IMPORTANT]
+> **"Virtual device not connecting?"**
+> Ensure no other process is blocking the MQTT port (8883/1883) if you changed the defaults.
+
+> [!WARNING]
+> **"Blank Graphs?"**
+> The simulator generates mock data for the current month. If you don't see data, ensure your system clock is correct or try selecting today's month in the UI dropdown.
+
+---
+
+## 🚀 Next Steps
+
+Ready for the real deal? Once you've mastered the simulator, check out the [**Real Hardware Setup Guide**](setup_real.md) to start building your physical feeder!
+
+---
+**Happy Testing! 🐶🐱**
