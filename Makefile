@@ -1,7 +1,11 @@
-.PHONY: setup install run run-sim clean docker-up docker-down
+.PHONY: setup install run run-sim test clean docker-up docker-down
 
-# Python command - Override this if needed (e.g., make setup PYTHON=py)
-PYTHON ?= python
+# Python command - Use 'py' on Windows for compatibility
+ifeq ($(OS),Windows_NT)
+PYTHON ?= py
+else
+PYTHON ?= python3
+endif
 PIP := $(PYTHON) -m pip
 
 # Setup virtual environment and install dependencies
@@ -40,6 +44,13 @@ docker-down:
 
 docker-logs:
 	docker-compose logs -f
+
+# Run Tests
+test:
+	$(PYTHON) -m pytest
+
+test-v:
+	$(PYTHON) -m pytest -v
 
 # Clean up temporary files
 clean:
