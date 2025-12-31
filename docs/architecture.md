@@ -40,7 +40,7 @@ The Smart Pet Feeder is built on a layered architecture that separates concerns 
 
 ## Component Interaction
 
-\```text
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                    Application (main.py)                 │
 │  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐ │
