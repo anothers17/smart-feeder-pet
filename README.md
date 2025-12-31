@@ -1,6 +1,10 @@
 # 🐾 Smart Pet Feeder IoT Project
 
-![Smart Pet Feeder App](assets/images/app_screenshot_placeholder.png)
+![Smart Pet Feeder App]
+
+> **IoT Project**  
+> 🎓 **Department:** Electronic Engineering  
+> 🏫 **University:** Suranaree University of Technology (SUT)
 
 A professional, modular, and production-ready IoT system for automated pet feeding. This project features a dual-mode architecture supporting both **Real Hardware (ESP32)** and a **Virtual Simulator** for testing without physical components.
 
