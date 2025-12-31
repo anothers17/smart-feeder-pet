@@ -6,6 +6,8 @@ This directory contains all the detailed technical documentation and setup guide
 
 - [**Simulation Setup Guide**](setup_simulator.md)  
   *Detailed steps for running the project in 100% software mode on your computer.*
+- [**macOS & Linux Setup Guide**](setup_unix.md)  
+  *Specific instructions for Unix-like systems using Make.*
 - [**Real Hardware Setup Guide**](setup_real.md)  
   *A comprehensive guide to wiring the ESP32, components, and uploading firmware.*
 - [**Database & Docker Setup**](docker-setup.md)  

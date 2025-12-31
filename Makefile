@@ -1,4 +1,4 @@
-.PHONY: setup install run run-sim test clean docker-up docker-down
+.PHONY: help setup install setup-env run run-sim test clean docker-up docker-down
 
 # Python command - Use 'py' on Windows for compatibility
 ifeq ($(OS),Windows_NT)
@@ -16,8 +16,17 @@ setup:
 	@echo "Linux/Mac: source venv/bin/activate"
 
 # Install dependencies
-install:
+install: setup-env
 	$(PIP) install -r requirements.txt
+
+# Create .env from example if not exists
+setup-env:
+	@if [ ! -f .env ]; then \
+		cp .env.example .env; \
+		echo ".env created from .env.example"; \
+	else \
+		echo ".env already exists"; \
+	fi
 
 # Run Real Mode Application
 run:
