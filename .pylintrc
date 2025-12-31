@@ -1,0 +1,6 @@
+[MASTER]
+ignore=petfeed.py,resource_rc.py
+ignore-paths=^src[\\/]ui[\\/]petfeed\.py$,^src[\\/]ui[\\/]resource_rc\.py$
+
+[MESSAGES CONTROL]
+disable=C0114,C0115,C0116,R0902,R0903,R0913,too-many-positional-arguments,broad-exception-caught,logging-fstring-interpolation

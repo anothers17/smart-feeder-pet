@@ -40,7 +40,7 @@ class VirtualDevice:
         self.settings = get_settings()
         
         # Device state
-        self.food_mount = float(self.settings.food_capacity)
+        self.food_mount = float(Constants.DEFAULT_FOOD_CAPACITY)
         self.weight = 0.0
         self.servo_angle = Constants.SERVO_CLOSE
         self.feeding_mode = "NONE"
