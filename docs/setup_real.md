@@ -24,7 +24,7 @@ This guide will help you set up the Smart Pet Feeder with real ESP32 hardware, M
 
 ## Wiring Diagram
 
-\`\`\`
+```text
 ESP32 Pin Connections:
 ┌─────────────────────────────────────┐
 │ ESP32          →    Component       │
@@ -38,14 +38,16 @@ ESP32 Pin Connections:
 └─────────────────────────────────────┘
 
 LED Connections:
-- WiFi LED: GPIO 2 → 220Ω Resistor → LED → GND
-- Status LED: GPIO 18 → 220Ω Resistor → LED → GND
+
+WiFi LED: GPIO 2 → 220Ω Resistor → LED → GND
+Status LED: GPIO 18 → 220Ω Resistor → LED → GND
 
 Servo Connections:
-- Signal (Orange/Yellow): GPIO 13
-- VCC (Red): 5V
-- GND (Brown/Black): GND
-\`\`\`
+
+Signal (Orange/Yellow): GPIO 13
+VCC (Red): 5V
+GND (Brown/Black): GND
+```
 
 ## Software Requirements
 
