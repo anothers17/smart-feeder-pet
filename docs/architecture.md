@@ -40,7 +40,7 @@ The Smart Pet Feeder is built on a layered architecture that separates concerns 
 
 ## Component Interaction
 
-\`\`\`
+\```text
 ┌─────────────────────────────────────────────────────────┐
 │                    Application (main.py)                 │
 │  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐ │
@@ -73,17 +73,17 @@ The Smart Pet Feeder is built on a layered architecture that separates concerns 
 │  - Servo Control     │
 │  - Sensor Reading    │
 └──────────────────────┘
-\`\`\`
+```
 
 ## Mode Architecture
 
 ### Simulator Mode
 
-\`\`\`
+```text
 Application → MQTT Simulator → Virtual Device
      ↓
 Mock Database (in-memory)
-\`\`\`
+```
 
 - No external dependencies
 - In-memory message queue
@@ -92,11 +92,11 @@ Mock Database (in-memory)
 
 ### Real Mode
 
-\`\`\`
+```text
 Application → MQTT Client → MQTT Broker → ESP32
      ↓
 MySQL Database
-\`\`\`
+```
 
 - Requires MQTT broker
 - Requires MySQL database
@@ -132,13 +132,13 @@ MySQL Database
 
 ## Configuration Management
 
-\`\`\`
+```text
 .env file
     ↓
 Settings.py (loads and validates)
     ↓
 Application components (injected)
-\`\`\`
+```
 
 All configuration is centralized in `.env` file and loaded through `Settings` class, which:
 - Validates required fields
