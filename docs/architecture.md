@@ -42,17 +42,17 @@ The Smart Pet Feeder is built on a layered architecture that separates concerns 
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
-│                    Application (main.py)                 │
-│  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐ │
-│  │  Settings  │  │  Initialize  │  │  Dependency     │ │
-│  │  Loader    │→ │  Components  │→ │  Injection      │ │
-│  └────────────┘  └──────────────┘  └─────────────────┘ │
+│                    Application (main.py)                │
+│  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐  │
+│  │  Settings  │  │  Initialize  │  │  Dependency     │  │
+│  │  Loader    │→ │  Components  │→ │  Injection      │  │
+│  └────────────┘  └──────────────┘  └─────────────────┘  │
 └─────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────┐
-│                      UI Layer (PyQt5)                    │
+│                      UI Layer (PyQt5)                   │
 │  ┌────────────────────────────────────────────────────┐ │
-│  │  Main Window                                        │ │
+│  │  Main Window                                       │ │
 │  │  - Feed Control Buttons                            │ │
 │  │  - Status Display                                  │ │
 │  │  - Graph Visualization                             │ │
